@@ -1,19 +1,83 @@
-# 작업 배치 #1: OpenClaw 모델/결제 경로 정리 외 1건
+---
+layout: post
+title: "작업 배치 #1 · OpenClaw 모델/결제 경로 정리 + 게이트웨이 복구"
+---
 
-## 이번 배치에서 다룬 작업
+처음엔 단순히 "GPT Pro 결제했으니 다 되는 거 아냐?"에서 시작했다.
+근데 실제로 붙여보니, **구독 경로**와 **API 과금 경로**가 완전히 분리돼 있었고,
+게이트웨이 쪽은 `pairing required` / `token mismatch`까지 겹쳐서 꽤 헷갈리는 상황이었다.
 
-### 1. OpenClaw 모델/결제 경로 정리
-- 문제: ChatGPT Pro 구독과 OpenAI API 과금 경로가 혼동됨
-- 접근: 모델 provider별 인증 경로와 과금 체계를 분리 설명
-- 결과: 기본 모델을 codex로 복귀하고 API 추가과금 리스크 제거
-- 태그: openclaw, openai, billing
+이번 글은 그때 정리한 내용을 **실무 기준**으로 다시 적어둔 기록이다.
 
-### 2. Gateway pairing/token mismatch 복구
-- 문제: gateway probe에서 unauthorized/pairing required 반복
-- 접근: pairing 승인 + gateway 상태 재검증 + 세션 정상화
-- 결과: Reachable yes 확인, 텔레그램 응답 정상
-- 태그: openclaw, gateway, ops
+---
 
-## 배치 회고
-- 공통 패턴: 문제를 작은 단위로 나눌수록 해결 속도가 빨라짐
-- 다음 액션: 반복되는 작업은 스크립트/템플릿으로 자동화
+## 1) 문제 정의
+
+현상은 크게 두 가지였다.
+
+1. 결제/모델 혼선
+- ChatGPT Pro를 결제했는데 `openai/gpt-5-pro`까지 자동으로 되는 줄 알았음
+- 실제로는 API 키 경로와 별개
+
+2. 연결 이슈
+- `openclaw gateway probe`에서
+  - `pairing required`
+  - `unauthorized: device token mismatch`
+  가 반복됨
+
+---
+
+## 2) 핵심 개념 정리 (짧고 정확하게)
+
+### 구독 vs API
+- **구독(ChatGPT/Codex OAuth)**: 웹/앱 중심 사용 권한
+- **API(OpenAI Platform)**: 토큰 사용량 기반 과금
+
+즉, `openai/gpt-5-pro`는 보통 API 경로라서 별도 비용이 발생할 수 있다.
+
+### OpenClaw에서의 실전 포인트
+- 안정 기본값: `openai-codex/gpt-5.3-codex`
+- 고비용 모델(`openai/gpt-5-pro`)은 필요할 때만 스위치
+
+---
+
+## 3) 해결 접근
+
+### A. 모델 경로 정리
+- 기본 모델을 codex 라인으로 복귀
+- API 키 노출 이슈가 있어 즉시 폐기(revoke)
+- 추가 과금 리스크 차단
+
+### B. 게이트웨이 복구
+- pairing 승인 처리
+- `probe` 재검증으로 연결 상태 확인
+- 텔레그램 왕복 테스트(`ping → pong`)로 실사용 확인
+
+---
+
+## 4) 결과
+
+- 모델/과금 구조가 명확해짐
+- 기본 운영을 codex로 고정
+- 게이트웨이 reachability 정상화
+- 채널 응답(텔레그램) 정상 동작 확인
+
+요약하면,
+> "설정이 많은 도구일수록, 개념(인증/과금/런타임)을 먼저 분리하고 들어가야 디버깅 비용이 줄어든다."
+
+---
+
+## 5) 이번 배치에서 남긴 실전 규칙
+
+- 토큰/키는 절대 채팅으로 공유하지 않기
+- 기본값은 안정/저비용 모델로
+- 고성능/고비용 모델은 명시적 스위치로만
+- 장애는 항상 `현상 → 가설 → 검증` 순서로 기록
+
+---
+
+## 6) 다음 배치에서 할 것
+
+- GPT/Codex ↔ Claude 작업 라우팅 룰셋 만들기
+- 블로그 자동 발행 품질(문장 톤/요약 카드) 개선
+- 배포 후 첫 글 피드백 반영해 템플릿 고도화

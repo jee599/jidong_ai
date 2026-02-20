@@ -1,0 +1,62 @@
+---
+---
+@import "minima";
+
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+}
+
+body {
+  line-height: 1.75;
+}
+
+.site-header,
+.site-footer {
+  border-color: #e5e7eb22;
+}
+
+.page-content {
+  padding-top: 24px;
+}
+
+.hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f8fafc;
+  padding: 28px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.hero p {
+  margin: 8px 0 0;
+  color: #cbd5e1;
+}
+
+.card {
+  border: 1px solid #e5e7eb33;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 14px;
+  background: #ffffff;
+}
+
+.post-content h2,
+.post-content h3 {
+  margin-top: 1.6em;
+}
+
+.post-content blockquote {
+  border-left: 4px solid #38bdf8;
+  background: #f8fafc;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+code {
+  border-radius: 6px;
+  padding: 2px 6px;
+}
