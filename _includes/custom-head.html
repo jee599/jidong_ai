@@ -1,0 +1,8 @@
+<script>
+(function(){
+  try {
+    var tone = localStorage.getItem('tone') || 'ocean';
+    document.documentElement.setAttribute('data-tone', tone);
+  } catch(e) {}
+})();
+</script>
