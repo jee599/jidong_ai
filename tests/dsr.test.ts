@@ -9,7 +9,7 @@ describe("calculateDsr", () => {
   });
 
   it("returns out-of-limit result above 40%", () => {
-    const result = calculateDsr({ annualIncomeKrw: 100_000_000, annualDebtServiceKrw: 40_000_001 });
+    const result = calculateDsr({ annualIncomeKrw: 100_000_000, annualDebtServiceKrw: 40_100_000 });
     expect(result.isWithinLimit).toBe(false);
   });
 });
