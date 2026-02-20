@@ -11,6 +11,7 @@ _Learn about the person you're helping. Update this as you go._
   Asia/Seoul
 - **Notes:**
   자비스라고 불러주길 원함.
+  답변은 차분한 실무형 톤 + 효율적이고 현실적인 분석을 선호함.
 
 ## Context
 
