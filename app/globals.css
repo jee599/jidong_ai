@@ -32,3 +32,142 @@ main {
 code {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
 }
+
+a {
+  color: var(--accent);
+}
+
+.muted {
+  color: #4c6170;
+  font-size: 0.95rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.form-grid label {
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+
+.form-grid input,
+.form-grid select,
+button {
+  border: 1px solid #b9c9d3;
+  border-radius: 10px;
+  padding: 0.65rem 0.8rem;
+  font: inherit;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.checkbox-label input {
+  margin-top: 0.2rem;
+}
+
+button {
+  cursor: pointer;
+  background: #19647e;
+  color: #fff;
+  border-color: #19647e;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.secondary {
+  background: #fff;
+  color: #1f2a36;
+}
+
+.button-row {
+  margin-top: 0.9rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.error-text {
+  margin: 0.15rem 0 0;
+  color: #b3261e;
+  font-size: 0.9rem;
+}
+
+.error-box {
+  margin: 1rem 0 0;
+  border-radius: 10px;
+  border: 1px solid #f0b7b2;
+  background: #fff1f0;
+  color: #7f1d1d;
+  padding: 0.8rem;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: minmax(130px, 200px) 1fr;
+  gap: 0.5rem 1rem;
+}
+
+.result-grid dt {
+  color: #365166;
+}
+
+.result-grid dd {
+  margin: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.result-grid .total {
+  font-weight: 700;
+  color: #0f3f52;
+}
+
+.toggle-button {
+  background: #ecf4f7;
+  color: #1f2a36;
+  border-color: #bad0da;
+}
+
+.process-list {
+  margin: 0.9rem 0 0;
+  padding-left: 1.1rem;
+  line-height: 1.6;
+}
+
+.disclaimer {
+  margin: 0;
+  color: #374e60;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.summary-box {
+  white-space: pre-wrap;
+  background: #f4f8fa;
+  border: 1px solid #c9d8e0;
+  border-radius: 10px;
+  padding: 0.9rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result-grid dd {
+    text-align: left;
+    margin-bottom: 0.4rem;
+  }
+}

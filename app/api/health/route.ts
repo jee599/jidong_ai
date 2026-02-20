@@ -1,14 +1,15 @@
 import { NextResponse } from "next/server";
-import { dsrRules, taxRules } from "@/src/domain/policy";
+import { dsrRules, mergePolicyMeta, taxRules } from "@/src/domain/policy";
+import { envelope } from "@/src/lib/api-envelope";
 
 export async function GET() {
-  return NextResponse.json({
-    ok: true,
-    data: { status: "healthy" },
-    meta: {
-      basisDate: `${taxRules.basisDate},${dsrRules.basisDate}`,
-      policyVersion: `${taxRules.policyVersion}+${dsrRules.policyVersion}`,
-      generatedAt: new Date().toISOString()
-    }
-  });
+  return NextResponse.json(
+    envelope(
+      { status: "healthy" },
+      mergePolicyMeta(
+        { basisDate: taxRules.basisDate, policyVersion: taxRules.policyVersion },
+        { basisDate: dsrRules.basisDate, policyVersion: dsrRules.policyVersion }
+      )
+    )
+  );
 }

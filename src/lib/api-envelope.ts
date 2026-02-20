@@ -14,3 +14,14 @@ export function envelope<T>(data: T, policyMeta: PolicyMeta) {
     } satisfies ApiMeta
   };
 }
+
+export function errorEnvelope(error: string, policyMeta: PolicyMeta) {
+  return {
+    ok: false as const,
+    error,
+    meta: {
+      ...policyMeta,
+      generatedAt: new Date().toISOString()
+    } satisfies ApiMeta
+  };
+}

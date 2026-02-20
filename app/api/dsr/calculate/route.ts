@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { dsrRules } from "@/src/domain/policy";
 import { calculateDsr, type DsrInput } from "@/src/domain/dsr/calculate";
-import { envelope } from "@/src/lib/api-envelope";
+import { envelope, errorEnvelope } from "@/src/lib/api-envelope";
 
 export async function POST(req: Request) {
   try {
@@ -20,15 +20,10 @@ export async function POST(req: Request) {
     );
   } catch (error) {
     return NextResponse.json(
-      {
-        ok: false,
-        error: error instanceof Error ? error.message : "Unexpected error",
-        meta: {
-          basisDate: dsrRules.basisDate,
-          policyVersion: dsrRules.policyVersion,
-          generatedAt: new Date().toISOString()
-        }
-      },
+      errorEnvelope(error instanceof Error ? error.message : "Unexpected error", {
+        basisDate: dsrRules.basisDate,
+        policyVersion: dsrRules.policyVersion
+      }),
       { status: 400 }
     );
   }
