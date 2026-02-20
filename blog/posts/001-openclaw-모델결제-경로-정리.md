@@ -17,7 +17,7 @@ title: "작업 배치 #1 · OpenClaw 모델/결제 경로 정리 + 게이트웨�
 
 ---
 
-## TL;DR
+## 요약
 
 - 문제의 본질은 모델이 아니라 **gateway 인증 상태 불일치(pairing/token mismatch)**였다.
 - 비용 리스크를 먼저 줄이기 위해 기본 모델을 `openai-codex/gpt-5.3-codex`로 고정했다.
