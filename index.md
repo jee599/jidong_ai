@@ -1,25 +1,29 @@
 ---
 layout: default
-title: jidong-ai
+title: 홈
 ---
 
 <section class="hero">
-  <h1 style="margin:0;">jidong-ai</h1>
-  <p>날짜 일기장이 아니라, <strong>작업량 기준</strong>으로 끊어서 기록하는 개발 학습 블로그.</p>
+  <p class="eyebrow">jidong-ai</p>
+  <h1>작업 배치 기반 기술 로그</h1>
+  <p>날짜 일기장이 아니라, <strong>의사결정과 실행 단위</strong>로 정리하는 개발 기록.</p>
 </section>
 
-<div class="card">
-  <h3 style="margin-top:0;">읽는 방법</h3>
+<section class="card">
+  <h2>이 블로그를 보는 방법</h2>
   <ul>
-    <li>한 글 = 의미 있는 작업 묶음(Work Batch)</li>
-    <li>문제 → 접근 → 결과 → 회고 순서로 정리</li>
-    <li>실무에서 재현 가능한 내용만 남기기</li>
+    <li>한 포스트 = 하나의 작업 배치</li>
+    <li>문제 → 선택지 → 결정 → 결과 → 체크리스트 순서</li>
+    <li>나중에 다시 봐도 바로 재현 가능하게 기록</li>
   </ul>
-</div>
+</section>
 
-<div class="card">
-  <h3 style="margin-top:0;">Posts</h3>
-  <ul>
-    <li><a href="/jidong_ai/blog/posts/001-openclaw-%EB%AA%A8%EB%8D%B8%EA%B2%B0%EC%A0%9C-%EA%B2%BD%EB%A1%9C-%EC%A0%95%EB%A6%AC.html">작업 배치 #1 · OpenClaw 모델/결제 경로 정리 + 게이트웨이 복구</a></li>
-  </ul>
-</div>
+<section class="posts-grid">
+  {% for post in site.posts %}
+  <article class="post-card">
+    <p class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</p>
+    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+    <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+  </article>
+  {% endfor %}
+</section>

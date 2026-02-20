@@ -3,3 +3,6 @@ description: Work-unit based engineering study log
 theme: minima
 markdown: kramdown
 encoding: utf-8
+lang: ko
+header_pages:
+  - index.md
