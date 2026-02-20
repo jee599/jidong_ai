@@ -1,0 +1,16 @@
+{
+  "basisDate": "2026-02-21",
+  "policyVersion": "phase1-day1-v1",
+  "zones": [
+    {
+      "sido": "서울특별시",
+      "sigungu": "강남구",
+      "effectiveFrom": "2025-01-01"
+    },
+    {
+      "sido": "서울특별시",
+      "sigungu": "서초구",
+      "effectiveFrom": "2025-01-01"
+    }
+  ]
+}

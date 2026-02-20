@@ -1,0 +1,9 @@
+{
+  "basisDate": "2026-02-21",
+  "policyVersion": "phase1-day1-v1",
+  "dsr": {
+    "maxDsrPpm": 400000,
+    "minimumAnnualIncomeKrw": 1,
+    "notes": "Simple baseline rule for Day 1"
+  }
+}

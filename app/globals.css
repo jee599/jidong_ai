@@ -1,0 +1,34 @@
+:root {
+  --bg: #f7f7f3;
+  --fg: #1f2a36;
+  --accent: #19647e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top right, #d7e8f2, var(--bg));
+  color: var(--fg);
+  font-family: "IBM Plex Sans", "Noto Sans KR", sans-serif;
+}
+
+main {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+.card {
+  background: #ffffffdd;
+  border: 1px solid #cad6dd;
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+code {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+}

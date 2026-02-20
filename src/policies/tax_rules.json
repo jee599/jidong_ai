@@ -1,0 +1,27 @@
+{
+  "basisDate": "2026-02-21",
+  "policyVersion": "phase1-day1-v1",
+  "acquisitionTax": {
+    "oneHome": {
+      "standardRateBelow6EokPpm": 10000,
+      "formulaRange": {
+        "minEokInclusive": 6,
+        "maxEokExclusive": 9,
+        "formula": "(priceInEok * 2/3 - 3) / 100"
+      },
+      "standardRateFrom9EokPpm": 30000
+    },
+    "multiHome": {
+      "generalRatePpm": 40000,
+      "adjustmentTargetAreaHeavyRatePpm": 80000
+    },
+    "localEducationTax": {
+      "nonHeavyMultiplierPpm": 100000,
+      "heavyRatePpm": 4000
+    },
+    "ruralSpecialTax": {
+      "areaTaxFreeMaxM2": 85,
+      "ratePpm": 2000
+    }
+  }
+}
