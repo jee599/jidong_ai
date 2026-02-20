@@ -28,11 +28,11 @@ title: 홈
 </section>
 
 <section class="posts-grid">
-  {% for post in site.posts %}
+  {% assign pages_with_post = site.pages | where_exp: "p", "p.path contains 'blog/posts/'" %}
+  {% for p in pages_with_post %}
   <article class="post-card">
-    <p class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</p>
-    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-    <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+    <h3><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
+    <p>{{ p.content | strip_html | truncate: 120 }}</p>
   </article>
   {% endfor %}
 </section>

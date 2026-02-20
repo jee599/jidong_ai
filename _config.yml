@@ -6,3 +6,5 @@ encoding: utf-8
 lang: ko
 header_pages:
   - index.md
+  - blog/index.md
+  - about.md
