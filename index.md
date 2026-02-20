@@ -22,8 +22,8 @@ title: 홈
   <h2>디자인 톤 비교 (A/B)</h2>
   <p class="muted">A: Ocean(기본, 선명한 블루) / B: Mono(차분한 뉴트럴)</p>
   <div class="tone-actions">
-    <button onclick="document.documentElement.setAttribute('data-tone','ocean'); localStorage.setItem('tone','ocean');">A안 Ocean</button>
-    <button onclick="document.documentElement.setAttribute('data-tone','mono'); localStorage.setItem('tone','mono');">B안 Mono</button>
+    <button type="button" data-tone="ocean">A안 Ocean</button>
+    <button type="button" data-tone="mono">B안 Mono</button>
   </div>
 </section>
 
