@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}" />
+  </head>
+  <body>
+    <header class="site-shell">
+      <div class="shell-inner">
+        <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <button id="themeToggle" class="theme-toggle" type="button">🌓</button>
+      </div>
+    </header>
+
+    <main class="site-shell">
+      <div class="shell-inner">
+        {{ content }}
+      </div>
+    </main>
+
+    <footer class="site-shell footer">
+      <div class="shell-inner muted">Built with work-units · {{ site.time | date: '%Y' }}</div>
+    </footer>
+
+    <script src="{{ '/assets/js/ui.js' | relative_url }}"></script>
+  </body>
+</html>
