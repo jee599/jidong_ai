@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "createdAt": "2026-02-21T01:08:20+09:00",
+    "title": "OpenClaw 모델/결제 경로 정리",
+    "problem": "ChatGPT Pro 구독과 OpenAI API 과금 경로가 혼동됨",
+    "approach": "모델 provider별 인증 경로와 과금 체계를 분리 설명",
+    "result": "기본 모델을 codex로 복귀하고 API 추가과금 리스크 제거",
+    "tags": [
+      "openclaw",
+      "openai",
+      "billing"
+    ],
+    "published": true,
+    "post": "001-openclaw-모델결제-경로-정리.md"
+  },
+  {
+    "id": 2,
+    "createdAt": "2026-02-21T01:08:20+09:00",
+    "title": "Gateway pairing/token mismatch 복구",
+    "problem": "gateway probe에서 unauthorized/pairing required 반복",
+    "approach": "pairing 승인 + gateway 상태 재검증 + 세션 정상화",
+    "result": "Reachable yes 확인, 텔레그램 응답 정상",
+    "tags": [
+      "openclaw",
+      "gateway",
+      "ops"
+    ],
+    "published": true,
+    "post": "001-openclaw-모델결제-경로-정리.md"
+  }
+]
